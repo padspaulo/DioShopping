@@ -131,6 +131,17 @@ const productsList = [
       name_categorys: "Casuais",
       selected: false
     },
+    {
+      id_product: 13,
+      category: "casual",
+      fk_idcategorys: 2,
+      name_product: "Benfica 2022",
+      price: 280.99,
+      image: "./images/produtos/benfica.jpg",
+      id_categorys: 2,
+      name_categorys: "Clubes europeus",
+      selected: false
+    },
 ];
 
 export default productsList;

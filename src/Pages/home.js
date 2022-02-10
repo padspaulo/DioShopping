@@ -5,13 +5,16 @@ import Item from '../components/Item';
 import Card from '../components/Card';
 
 const useStyles = makeStyles((theme) => ({
+
     root: {
       flexGrow: 1,
       marginTop: '5px',
+      
     },
     paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center'
+      padding: theme.spacing(3),
+      textAlign: 'center',
+      marginTop: '10px',
     },
   }));
 
@@ -38,15 +41,13 @@ const HomePage = () => {
     let count = { };
 
     for(let i = 0; i < arrayCategory.length; i++){
-        {
             let key = arrayCategory[i];
             count[key] = (count[key] ? count[key] + 1 : 1)
-        }
     }
 
     return(
-        <Grid container spacing={3} className={classes.root}>
-            <Grid item xs={3}>
+        <Grid container spacing={2} className={classes.root}>
+            <Grid item xs={2}>
                 <Paper className={classes.paper}>
                     <Typography variant='h5'>
                         Categorias

@@ -1,7 +1,48 @@
 import { useState, useEffect } from 'react';
 import { Grid, Button, TextField } from '@material-ui/core/';
 
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Rating from '@mui/material/Rating';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+
 const Contatos = () => {
+
+    const customIcons = {
+        1: {
+          icon: <SentimentVeryDissatisfiedIcon />,
+          label: 'Very Dissatisfied',
+        },
+        2: {
+          icon: <SentimentDissatisfiedIcon />,
+          label: 'Dissatisfied',
+        },
+        3: {
+          icon: <SentimentSatisfiedIcon />,
+          label: 'Neutral',
+        },
+        4: {
+          icon: <SentimentSatisfiedAltIcon />,
+          label: 'Satisfied',
+        },
+        5: {
+          icon: <SentimentVerySatisfiedIcon />,
+          label: 'Very Satisfied',
+        },
+      };
+      
+      function IconContainer(props) {
+        const { value, ...other } = props;
+        return <span {...other}>{customIcons[value].icon}</span>;
+      }
+      
+      IconContainer.propTypes = {
+        value: PropTypes.number.isRequired,
+      };
 
     const url = 'http://localhost:5000/message'
     const [message, setMessage] = useState([]);
@@ -53,9 +94,9 @@ const Contatos = () => {
 
     return(
         <>
-            <Grid container direction="row" xs={12}>
-                <TextField id="name" label="Name" value={author} onChange={(event)=>{setAuthor(event.target.value)}} fullWidth/>
-                <TextField id="message" label="Message" value={content} onChange={(event)=>{setContent(event.target.value)}} fullWidth/>
+            <Grid container direction="row" xs={12} >
+                <TextField id="name" label="Nome" value={author} onChange={(event)=>{setAuthor(event.target.value)}} fullWidth/>
+                <TextField id="message" label="Mensagem" value={content} onChange={(event)=>{setContent(event.target.value)}} fullWidth/>
             </Grid>
 
             {validator && 
@@ -78,10 +119,26 @@ const Contatos = () => {
             {message.map((content) => {
                 return(
                     <div className="card mt-2" key={content.id}>
-                        <div className="card-body">
-                            <h5 className="card-title">{content.email}</h5>
-                            <p className="card-text">{content.message}</p>
-                            <p className="card-text"><small className="text-muted">{content.created_at}</small></p>
+                        <div className="card-body container">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 className="card-title">{content.email}</h5>
+                                    <p className="card-text">{content.message}</p>
+                                    <p className="card-text"><small className="text-muted">{content.created_at}</small></p>
+                                </div>
+                            
+                                <div class="col" style={{ textAlign: 'right'}}>
+                                    <span style={{marginRight:'10px'}}>Avalie o comentário</span>
+                                    <div style={{marginTop:'10px'}}>
+                                        <Rating 
+                                            name="highlight-selected-only"
+                                            defaultValue={2}
+                                            IconContainerComponent={IconContainer}
+                                            highlightSelectedOnly
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )

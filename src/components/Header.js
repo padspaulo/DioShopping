@@ -15,6 +15,9 @@ const Header = () => {
             <Link to="/contato">
                 <Button color="primary">Contato</Button>
             </Link>
+            <Link to="/adicionais">
+                <Button color="primary">Adicionais</Button>
+            </Link>
             <Cart />   
 
             
