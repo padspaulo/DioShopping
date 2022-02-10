@@ -76,6 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * Complemento da loja utilizando a aba adicionais como acesso a página de links.
   1) Criação de Menu Links exteriores. Fonte: https://medium.com/how-to-react/create-a-sidebar-menu-in-react-js-3463b306ca9a
   2) Introdução de vídeos. Fonte: https://www.youtube.com/watch?v=7sDY4m8KNLc
-* Utilização da componetização em Adicionais. Componentes <Side /> e <Videos/>
+* Utilização da componetização em Adicionais. Componentes Side e Videos.
 * Utilização de "react-icons/fi" para alterar os icones da aba link Adicionais.
 * Criada mais uma rota em Header para adicionais.
